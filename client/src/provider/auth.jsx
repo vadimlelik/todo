@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = '147.45.237.165';
 
   const getMe = async () => {
     setIsLoading(true);
