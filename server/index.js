@@ -40,12 +40,16 @@ const start = async () => {
     const mongoUser = process.env.MONGO_USER || 'admin';
     const mongoPassword = process.env.MONGO_PASSWORD || 'mongopass';
     const mongoDb = process.env.MONGO_DB || 'testdb';
+    // Определяем хост: в Docker используем имя сервиса, локально - localhost
+    const mongoHost = process.env.MONGO_HOST || (process.env.NODE_ENV === 'production' ? 'mern-mongo' : 'localhost');
 
     const mongoUri =
       process.env.MONGO_URI ||
       `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:27017/${mongoDb}?authSource=admin`;
 
+    console.log(`Connecting to MongoDB at ${mongoHost}...`);
     await mongoose.connect(mongoUri);
+    console.log('Connected to MongoDB successfully');
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
     console.error('Error starting server:', error.message);
