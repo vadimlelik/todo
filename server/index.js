@@ -37,6 +37,7 @@ app.use('/api/v1/auth', authRouter);
 
 const start = async () => {
   try {
+    console.log(process.env.MONGO_URI);
     await mongoose.connect(process.env.MONGO_URI);
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
