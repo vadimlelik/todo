@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const getMe = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/v1/auth/me`, {
+      const response = await fetch(`/api/v1/auth/me`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   };
   const logout = async () => {
     try {
-      await fetch(`${API_URL}/api/v1/auth/logout`, {
+      await fetch(`/api/v1/auth/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   };
   const login = async (payload) => {
     try {
-      const response = await fetch(`${API_URL}/api/v1/auth/login`, {
+      const response = await fetch(`/api/v1/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (payload) => {
     try {
-      const response = await fetch(`${API_URL}/api/v1/auth/register`, {
+      const response = await fetch(`/api/v1/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
