@@ -46,7 +46,7 @@ const start = async () => {
     // console.log('mongoUser', mongoUri);
 
     await mongoose.connect(
-      'mongodb://user:mongopass@localhost:27017/mern?authSource=admin',
+      'mongodb://user:mongopass@mongo:27017/mern?authSource=admin',
     );
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
