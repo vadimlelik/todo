@@ -43,6 +43,7 @@ const start = async () => {
     const mongoHost = process.env.MONGO_HOST;
 
     const mongoUri = `mongodb://user:mongopass@${mongoHost}:27017/${mongoDb}?authSource=admin`;
+    console.log('mongoUser', mongoUri);
 
     await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB');
