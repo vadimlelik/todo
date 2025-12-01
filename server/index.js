@@ -37,8 +37,15 @@ app.use('/api/v1/auth', authRouter);
 
 const start = async () => {
   try {
-    console.log(process.env.MONGO_URI);
-    await mongoose.connect(process.env.MONGO_URI);
+    const mongoUser = process.env.MONGO_USER || 'admin';
+    const mongoPassword = process.env.MONGO_PASSWORD || 'mongopass';
+    const mongoDb = process.env.MONGO_DB || 'testdb';
+
+    const mongoUri =
+      process.env.MONGO_URI ||
+      `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:27017/${mongoDb}?authSource=admin`;
+
+    await mongoose.connect(mongoUri);
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
   } catch (error) {
     console.error('Error starting server:', error.message);
