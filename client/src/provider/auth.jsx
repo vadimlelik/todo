@@ -9,7 +9,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  console.log('authUser CTX', authUser);
   const API_URL = '147.45.237.165';
 
   const getMe = async () => {
@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const login = async (payload) => {
+    setIsLoading(true);
     try {
       const response = await fetch(`/api/v1/auth/login`, {
         method: 'POST',
@@ -56,12 +57,14 @@ export const AuthProvider = ({ children }) => {
       });
       const data = await response.json();
       setAuthUser(data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   const register = async (payload) => {
+    setIsLoading(true);
     try {
       const response = await fetch(`/api/v1/auth/register`, {
         method: 'POST',
@@ -73,6 +76,7 @@ export const AuthProvider = ({ children }) => {
       });
       const data = await response.json();
       setAuthUser(data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }

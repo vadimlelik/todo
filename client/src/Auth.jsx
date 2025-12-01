@@ -19,7 +19,7 @@ export const Auth = () => {
       <button
         onClick={() => {
           login({
-            email: 'test@mail.ru',
+            email: 'vdim@mail.ru',
             password: '123456',
           });
         }}
