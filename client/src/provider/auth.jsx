@@ -22,6 +22,9 @@ export const AuthProvider = ({ children }) => {
         },
         credentials: 'include', // Для cookies
       });
+      if (!response.ok) {
+        throw new Error('error');
+      }
       const data = await response.json();
       setAuthUser(data);
       setIsLoading(false);
